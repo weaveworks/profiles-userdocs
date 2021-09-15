@@ -29,6 +29,7 @@ jobs:
           make docgen
           git config --global user.email "actions@github.com"
           git config --global user.name "gh-actions"
+          cd userdocs/
           if [ -e yarn.lock ]; then
           yarn install --frozen-lockfile
           elif [ -e package-lock.json ]; then

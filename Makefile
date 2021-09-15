@@ -1,19 +1,24 @@
 .DEFAULT_GOAL := help
 
+##@ Build
+
+schema:
+	go build -o bin/schema cmd/schema/main.go
+
 ##@ Docs
 
 docs: docgen ## Build the docs
-	pushd . && yarn install && popd
-	pushd . && yarn install && yarn build && popd
+	pushd userdocs/ && yarn install && popd
+	pushd userdocs/ && yarn install && yarn build && popd
 
 local-docs: docs ## Serve the docs locally
-	pushd . && yarn start && popd
+	pushd userdocs/. && yarn start && popd
 
 docgen: schema ## Autogenerate the schema and pctl help in the docs
-	pctl docgen --path docs/pctl || (echo "please update your pctl version to >= 0.0.4" && exit 1)
-	mkdir -p docs/assets/schema
-	bin/schema ProfileCatalogSource docs/assets/schema/catalogdef.json
-	bin/schema ProfileDefinition docs/assets/schema/profiledef.json
+	pctl docgen --path userdocs/docs/pctl || (echo "please update your pctl version to >= 0.0.4" && exit 1)
+	mkdir -p userdocs/docs/assets/schema
+	bin/schema ProfileCatalogSource userdocs/docs/assets/schema/catalogdef.json
+	bin/schema ProfileDefinition userdocs/docs/assets/schema/profiledef.json
 
 .PHONY: help
 help:  ## Display this help. Thanks to https://www.thapaliya.com/en/writings/well-documented-makefiles/
