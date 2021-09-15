@@ -20,6 +20,16 @@ docgen: schema ## Autogenerate the schema and pctl help in the docs
 	bin/schema ProfileCatalogSource userdocs/docs/assets/schema/catalogdef.json
 	bin/schema ProfileDefinition userdocs/docs/assets/schema/profiledef.json
 
+##@ Tools
+
+download:
+	@echo Download go.mod dependencies
+	@go mod download
+
+install-tools: download ## Install tools
+	@echo Installing tools from tools.go
+	@cat tools.go | grep _ | awk -F'"' '{print $$2}' | xargs -tI % go install %
+
 .PHONY: help
 help:  ## Display this help. Thanks to https://www.thapaliya.com/en/writings/well-documented-makefiles/
 ifeq ($(OS),Windows_NT)
