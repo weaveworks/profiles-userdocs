@@ -12,7 +12,7 @@ and run: mdtoc -inplace README.md
 <!-- toc -->
 - [Local Development](#local-development)
   - [From project root](#from-project-root)
-  - [From <code>userdocs/profiles.dev</code>](#from-)
+  - [From <code>userdocs</code>](#from-)
 - [Deployment](#deployment)
   - [Automated](#automated)
   - [Manual](#manual)
@@ -31,9 +31,9 @@ This command installs required packages, starts a local development server and o
 at `localhost:3000`.
 Most changes are reflected live without having to restart the server.
 
-### From `userdocs/profiles.dev`
+### From `userdocs`
 
-Ensure you are in `userdocs/profiles.dev`, and run:
+Ensure you are in `userdocs`, and run:
 
 ```console
 yarn install
