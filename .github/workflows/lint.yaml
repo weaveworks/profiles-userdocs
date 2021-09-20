@@ -1,7 +1,10 @@
+name: Lint
+
 on: pull_request
 
 jobs:
   lint:
+    name: Ensure GitHub Actions are pinned to SHA
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
