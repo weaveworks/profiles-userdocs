@@ -8,11 +8,11 @@ jobs:
   gh-release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@50fbc622fc4ef5163becd7fab6573eac35f8462e # pin@v1
+      - uses: actions/setup-node@f1f314fca9dfce2769ece7d933488f076716723e # pin@v1
         with:
           node-version: '12.x'
-      - uses: webfactory/ssh-agent@v0.5.0
+      - uses: webfactory/ssh-agent@6b2f2c5354ff41f1edbbf7a17ea9b6178c89be9f # pin@v0.5.0
         with:
           ssh-private-key: ${{ secrets.PROFILES_DOCS_WEAVEWORKS_DOCS_BOT_DEPLOY_KEY }}
       - name: Fetch latest pctl binary
